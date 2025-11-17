@@ -1,0 +1,96 @@
+/* === CONTENEDOR GENERAL === */
+.spotlight-card {
+  position: relative;
+  width: 340px;
+  margin: 80px auto;
+  padding: 32px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.spotlight-card:hover {
+  transform: translateY(-6px);
+}
+
+
+/* Track del mouse */
+.spotlight-card:hover .spotlight-layer {
+  mix-blend-mode: screen;
+}
+
+/* === FORMULARIO === */
+.spotlight-card h1 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+label {
+  color: #e2e2e2;
+  font-size: 14px;
+}
+
+input[type="text"],
+input[type="password"] {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+}
+
+input[type="text"]::placeholder,
+input[type="password"]::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.remember-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+button {
+  margin-top: 14px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #6f4aff, #8b6bff);
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+.register-link {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 13px;
+  color: #e1e1e1;
+}
+
+.register-link a {
+  color: #a98bff;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
