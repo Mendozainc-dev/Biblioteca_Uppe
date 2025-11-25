@@ -1,46 +1,13 @@
-import ColorBends from './components/ColorBends';
-import React from 'react';
-import Inicio_sesion from './components/menu_iniciosesion';
-import './App.css'
+import HeaderLogin from "./components/common/Header_login";
+import Login_Form from "./components/common/Login_Form";
 
 function App() {
   return (
-    <>
-      
-      <div
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100vw",
-          height: "100vh",
-          zIndex: -1,
-        }}
-      >
-        <ColorBends
-          colors={["#ff5c7a", "#8a5cff", "#00ffd1"]}
-          rotation={30}
-          speed={0.3}
-          scale={1.2}
-          frequency={3}
-          warpStrength={1.2}
-          mouseInfluence={0.8}
-          parallax={0.6}
-          noise={0.08}
-          transparent
-        />
-      </div>
-
-      <div>
-        <div className="centrar-div">
-                  <Inicio_sesion />
-        </div>
-
-
-      </div>
-    </>
+    <div>
+      <HeaderLogin />
+      <Login_Form />
+    </div>
   );
 }
 
-
-export default App
+export default App;

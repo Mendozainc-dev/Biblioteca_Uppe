@@ -1,0 +1,41 @@
+header {
+    display: flex;
+}
+
+.logo_container {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo_container img {
+    width: 150px;
+    display: flex;
+}
+
+.navigator_container {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.navigator_container button {
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    padding: 10px;
+    font-weight: lighters;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 25px;
+    border: none;
+}
+
+.navigator_container button:hover {
+    color: #279ec5;
+    transition: color 0.5s ease;
+    cursor: pointer;
+}
