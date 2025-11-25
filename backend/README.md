@@ -13,24 +13,10 @@ source .venv/bin/activate
 
 ```bash
 pip install -r requirements.txt
-```## ¿Qué es este backend?
+``` 
 
-Este repositorio contiene el backend construido con Django. Es responsable de:
-- La lógica de negocio y las APIs (REST/GraphQL según configuración).
-- La gestión de la base de datos mediante modelos y migraciones.
-- La autenticación y permisos.
-- La exposición de endpoints para el frontend y otros servicios.
+```1. Crear y activar entorno virtual (ya indicado arriba). En Windows:```
 
-Estructura típica:
-- manage.py — entrada para comandos Django.
-- myproject/ — configuración del proyecto (settings, urls, wsgi/asgi).
-- apps/ o nombres de apps individuales — la lógica por módulos.
-- requirements.txt — dependencias del proyecto.
-- .env.example — variables de entorno de ejemplo.
-
-## Cómo inicializar el backend (resumen limpio)
-
-1. Crear y activar entorno virtual (ya indicado arriba). En Windows:
 ```bash
 python -m venv .venv
 .venv\Scripts\activate
