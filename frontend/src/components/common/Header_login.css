@@ -23,19 +23,20 @@ header {
 }
 
 .navigator_container button {
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: #279ec5;
     font-size: 20px;
     padding: 10px;
     font-weight: lighters;
     padding-left: 20px;
     padding-right: 20px;
     border-radius: 25px;
-    border: none;
+    border: 2px solid #279ec5;
 }
 
 .navigator_container button:hover {
-    color: #279ec5;
+    color: white;
+    background-color: #279ec5;
     transition: color 0.5s ease;
     cursor: pointer;
 }

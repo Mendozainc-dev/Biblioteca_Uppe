@@ -1,5 +1,6 @@
 import LogoBibliotecaUppe from "../../assets/images/WhatsApp Image 2025-10-13 at 6.48.53 PM.jpeg";
 import "./Header_login.css";
+import { Link } from "react-router-dom";
 
 function HeaderLogin() {
   return (
@@ -9,15 +10,15 @@ function HeaderLogin() {
           <img src={LogoBibliotecaUppe} alt="LogoBibliotecaUppe" />
         </div>
         <nav className="navigator_container">
-          <a href="/">
+          <Link to="/">
             <button>Contactanos</button>
-          </a>
-          <a href="/about">
+          </Link>
+          <Link to="/">
             <button>Iniciar Sesión</button>
-          </a>
-          <a href="/contact">
+          </Link>
+          <Link to="/registrar-usuario">
             <button>Registrarse</button>
-          </a>
+          </Link>
         </nav>
       </header>
     </div>
