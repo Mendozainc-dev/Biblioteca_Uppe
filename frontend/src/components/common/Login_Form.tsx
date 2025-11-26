@@ -1,10 +1,13 @@
+import "../../styles/fonts.css";
+
 import React, { useState } from "react";
 import "./Login_Form.css";
+import { Link } from "react-router-dom";
 
 const LoginForm = () => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(false);
+  const [termsAccepted, setTermsAccepted] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -14,7 +17,7 @@ const LoginForm = () => {
       "Contraseña:",
       password,
       "Recordarme:",
-      rememberMe,
+      termsAccepted,
     );
     alert("Esperando respuesta del servidor");
   };
@@ -50,19 +53,21 @@ const LoginForm = () => {
             <input
               type="checkbox"
               id="rememberMe"
-              checked={rememberMe}
-              onChange={(e) => setRememberMe(e.target.checked)}
+              checked={termsAccepted}
+              onChange={(e) => setTermsAccepted(e.target.checked)}
             />
-            <label htmlFor="rememberMe">Recordarme</label>
+            <label htmlFor="rememberMe">
+              Acepto los términos y condiciones
+            </label>
           </div>
           <button type="submit" className="login-button">
             Iniciar Sesión
           </button>
           <p className="register-link-container">
             ¿No tienes cuenta?{" "}
-            <a href="/register" className="register-link">
+            <Link to="/registrar-usuario" className="register-link">
               ¡Regístrate!
-            </a>
+            </Link>
           </p>
         </form>
       </div>
