@@ -1,6 +1,7 @@
 import "../../styles/fonts.css";
 
-import React, { useState } from "react";
+import { useState } from "react";
+import type { FormEvent } from "react";
 import "./Login_Form.css";
 import { Link } from "react-router-dom";
 
@@ -9,7 +10,7 @@ const LoginForm = () => {
   const [password, setPassword] = useState("");
   const [termsAccepted, setTermsAccepted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log(
       "Usuario:",
