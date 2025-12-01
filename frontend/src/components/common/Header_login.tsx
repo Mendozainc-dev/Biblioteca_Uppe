@@ -10,7 +10,7 @@ function HeaderLogin() {
           <img src={LogoBibliotecaUppe} alt="LogoBibliotecaUppe" />
         </div>
         <nav className="navigator_container">
-          <Link to="/">
+          <Link to="/contacto">
             <button>Contactanos</button>
           </Link>
           <Link to="/">
