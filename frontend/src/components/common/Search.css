@@ -1,0 +1,30 @@
+/* ====== Contenedor principal ====== */
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  margin: 2rem auto;
+}
+
+/* ====== Ícono de lupa ====== */
+.search-container img {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* ====== Campo de búsqueda ====== */
+.search-input {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 3rem; /* espacio para el ícono */
+  font-size: 1rem;
+  color: #333;
+}
+
+
+

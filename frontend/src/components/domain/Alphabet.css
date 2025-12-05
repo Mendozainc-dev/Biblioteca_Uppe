@@ -1,0 +1,30 @@
+.alphabet-nav {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 1rem;
+  margin-bottom: 0;
+  justify-content: center;
+  background-color: #f9f9f9;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.alphabet-letter {
+  padding: 0.5rem 0.75rem;
+  border: none;
+  background: transparent;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.alphabet-letter:hover {
+  color: #4ecdc4;
+}
+
+.alphabet-all {
+  color: #4ecdc4;
+  font-weight: 600;
+}
