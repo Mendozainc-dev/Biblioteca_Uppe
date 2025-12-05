@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.hashers import make_password, check_password
 
 
 # Diferentes clases que seran asumidas por la base de datos para que se usen correctamente en este caso
@@ -23,8 +24,17 @@ class Admin(models.Model):
     matricula_admin = models.CharField(max_length=200)
     nombre_admin = models.CharField(max_length=200)
     email_admin = models.EmailField(unique=True)
-    password_admin = models.CharField(max_length=200)
+    password_admin = models.CharField(max_length=255)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        # Hashear la contraseña si es texto plano
+        if self.password_admin and not self.password_admin.startswith('pbkdf2_'):
+            self.password_admin = make_password(self.password_admin)
+        super().save(*args, **kwargs)
+
+    def check_password(self, raw_password):
+        return check_password(raw_password, self.password_admin)
 
     def __str__(self):
         return self.nombre_admin
@@ -36,8 +46,17 @@ class Usuario(models.Model):
     nombre_usuario = models.CharField(max_length=200)
     apellido_usuario = models.CharField(max_length=200)
     email_usuario = models.EmailField(unique=True)
-    password_usuario = models.CharField(max_length=200)
+    password_usuario = models.CharField(max_length=255)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        # Hashear la contraseña si es texto plano
+        if self.password_usuario and not self.password_usuario.startswith('pbkdf2_'):
+            self.password_usuario = make_password(self.password_usuario)
+        super().save(*args, **kwargs)
+
+    def check_password(self, raw_password):
+        return check_password(raw_password, self.password_usuario)
 
     def __str__(self):
         return self.nombre_usuario
@@ -64,4 +83,4 @@ class Ventas(models.Model):
     fecha_creacion = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.libro.nombre_libro} - {self.usuario.nombre_usuario}"
+        return f"{self.objeto} - {self.usuario.nombre_usuario}"
