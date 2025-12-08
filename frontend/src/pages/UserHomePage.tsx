@@ -8,4 +8,3 @@ function UserHomePage() {
 }
 
 export default UserHomePage;
-
