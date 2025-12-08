@@ -28,15 +28,27 @@ Sistema de gestión de biblioteca desarrollado con Django (backend) y React + Ty
    python manage.py migrate
    ```
 
-4. **Crear un administrador de prueba:**
+4. **Crear usuarios de prueba:**
+   
+   **Administrador:**
    ```bash
    python create_admin.py
    ```
-   
-   Esto creará un administrador con las siguientes credenciales:
+   Credenciales:
    - **Email:** `admin@test.com`
    - **Contraseña:** `admin123`
    - **Matrícula:** `ADMIN001`
+   - **Rol:** Administrador
+   
+   **Usuario regular:**
+   ```bash
+   python create_user.py
+   ```
+   Credenciales:
+   - **Email:** `usuario@test.com`
+   - **Contraseña:** `usuario123`
+   - **Matrícula:** `USER001`
+   - **Rol:** Usuario
 
 5. **Iniciar el servidor Django:**
    ```bash
@@ -64,21 +76,52 @@ Sistema de gestión de biblioteca desarrollado con Django (backend) y React + Ty
    
    El frontend estará disponible en `http://localhost:5173`
 
-## 🔐 Sistema de Autenticación
+## 🔐 Sistema de Autenticación y Roles
 
-### Login
+### Sistema de Roles
 
-El sistema de login está conectado al backend y valida las credenciales contra el modelo `Admin` en la base de datos.
+El sistema utiliza un modelo unificado `Usuario` con dos roles:
+- **Administrador (`admin`)**: Acceso completo al sistema
+- **Usuario (`user`)**: Acceso limitado para usuarios regulares
+
+### Login y Redirección
+
+El sistema de login valida las credenciales y redirige automáticamente según el rol del usuario:
+
+- **Administradores** → Redirige a `/admin/dashboard`
+- **Usuarios regulares** → Redirige a `/user/home`
 
 **Credenciales de prueba:**
+
+**Administrador:**
 - Email: `admin@test.com`
 - Contraseña: `admin123`
+- Redirección: `/admin/dashboard`
+
+**Usuario regular:**
+- Email: `usuario@test.com`
+- Contraseña: `usuario123`
+- Redirección: `/user/home`
 
 ### Endpoints Disponibles
 
 - `POST /login/` - Endpoint de autenticación
   - Body: `{ "email": "admin@test.com", "password": "admin123" }`
-  - Respuesta exitosa: `{ "success": true, "message": "Login exitoso", "admin": {...} }`
+  - Respuesta exitosa: 
+    ```json
+    {
+      "success": true,
+      "message": "Login exitoso",
+      "user": {
+        "id": 1,
+        "matricula": "ADMIN001",
+        "nombre": "Administrador de Prueba",
+        "email": "admin@test.com",
+        "rol": "admin"
+      },
+      "redirect": "/admin/dashboard"
+    }
+    ```
   - Respuesta de error: `{ "success": false, "message": "Credenciales inválidas" }`
 
 - `GET /ping/` - Endpoint de prueba
@@ -90,8 +133,9 @@ El proyecto utiliza **SQLite** como base de datos local. La base de datos se cre
 
 ### Modelos Disponibles
 
-- **Admin** - Administradores del sistema
-- **Usuario** - Usuarios de la biblioteca
+- **Usuario** - Modelo unificado para usuarios y administradores (con campo `rol`)
+  - `rol`: "admin" o "user"
+  - El modelo `Admin` es un proxy de `Usuario` para compatibilidad
 - **Libro** - Libros disponibles
 - **Prestamo** - Registro de préstamos
 - **Ventas** - Registro de ventas
@@ -111,14 +155,16 @@ Biblioteca_Uppe/
 │   │   └── urls.py         # URLs principales
 │   ├── manage.py
 │   ├── requirements.txt   # Dependencias Python
-│   └── create_admin.py    # Script para crear admin de prueba
+│   ├── create_admin.py    # Script para crear admin de prueba
+│   └── create_user.py     # Script para crear usuario de prueba
 │
 └── frontend/               # Aplicación React
     ├── src/
     │   ├── components/     # Componentes React
     │   │   └── common/    # Componentes comunes (Login, Header)
     │   ├── pages/         # Páginas principales
-    │   │   ├── AdminPage.tsx
+    │   │   ├── AdminPage.tsx        # Dashboard de administrador
+    │   │   ├── UserHomePage.tsx     # Página de usuario regular
     │   │   ├── ContactoPage.tsx
     │   │   └── RegistrarUsuario.tsx
     │   ├── App.tsx        # Componente principal
@@ -157,7 +203,11 @@ Biblioteca_Uppe/
    python manage.py migrate
    ```
 
-4. **Admin de Prueba:** El script `create_admin.py` solo crea un admin si no existe uno con el mismo email. Puedes modificar el script para crear más administradores.
+4. **Usuarios de Prueba:** Los scripts `create_admin.py` y `create_user.py` solo crean usuarios si no existen con el mismo email. Puedes modificar los scripts para crear más usuarios.
+
+5. **Redirección por Rol:** Después del login exitoso, el sistema redirige automáticamente según el rol:
+   - Administradores → `/admin/dashboard`
+   - Usuarios → `/user/home`
 
 ## 🐛 Solución de Problemas
 

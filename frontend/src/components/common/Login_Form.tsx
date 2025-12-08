@@ -39,7 +39,11 @@ const LoginForm = () => {
       const data = await response.json();
 
       if (data.success) {
-        navigate("/admin");
+        // Usar la ruta de redirección devuelta por el backend
+        // El backend devuelve '/admin/dashboard' para administradores
+        // y '/user/home' para usuarios regulares
+        const redirect = data.redirect || "/";
+        navigate(redirect);
       } else {
         setError(data.message || "Error al iniciar sesión");
       }
@@ -56,7 +60,9 @@ const LoginForm = () => {
         <h1 className="login-title">INICIAR SESIÓN</h1>
 
         <form className="login-form" onSubmit={handleSubmit}>
-          {error && <div style={{ color: "red", marginBottom: "10px" }}>{error}</div>}
+          {error && (
+            <div style={{ color: "red", marginBottom: "10px" }}>{error}</div>
+          )}
           <input
             type="email"
             className="login-input"

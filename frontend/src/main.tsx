@@ -6,6 +6,7 @@ import App from "./App.tsx";
 import RegistrarUsuario from "./pages/RegistrarUsuario.tsx";
 import MostrarContacto from "./pages/ContactoPage.tsx";
 import AdminPage from "./pages/AdminPage.tsx";
+import UserHomePage from "./pages/UserHomePage.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -14,7 +15,8 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/registrar-usuario" element={<RegistrarUsuario />} />
         <Route path="/" element={<App />} />
         <Route path="/contacto" element={<MostrarContacto />} />
-        <Route path="/admin" element={<AdminPage />} />
+        <Route path="/admin/dashboard" element={<AdminPage />} />
+        <Route path="/user/home" element={<UserHomePage />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
