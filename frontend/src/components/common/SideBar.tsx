@@ -1,8 +1,7 @@
-import LogoBibliotecaUppe from "../../assets/images/WhatsApp Image 2025-10-13 at 6.48.53 PM.jpeg";
+import LogoBibliotecaUppe from "../../assets/images/LogoUppe.svg";
 import "./SideBar.css";
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
-
 
 const SideBar = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -45,11 +44,7 @@ const SideBar = () => {
       {/* Header */}
       <header>
         <figure>
-          <img
-            className="upp-logo"
-            src={LogoBibliotecaUppe}
-            alt="upp logo"
-          />
+          <img className="upp-logo" src={LogoBibliotecaUppe} alt="upp logo" />
         </figure>
       </header>
 

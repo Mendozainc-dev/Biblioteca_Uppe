@@ -1,78 +1,78 @@
 .header-top {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 1rem 2rem;
-  background-color: #ffffff;
-  border-bottom: 1px solid #e6e6e6;
-  position: fixed;
-  left: 240px;
-  right: 0;
-  top: 0;
-  z-index: 200;
+    display: flex;
+    justify-content: right;
+    align-items: self-end;
+    padding: 1rem 2rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e6e6e6;
+    position: fixed;
+    left: 240px;
+    right: 0;
+    top: 0;
+    z-index: 200;
 }
 
 .header-user {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
 }
 
 .user-name {
-  font-size: 0.875rem;
-  color: #333;
-  font-weight: 500;
-  text-align: right;
+    font-size: 0.875rem;
+    color: #333;
+    font-weight: 500;
+    text-align: right;
 }
 
 .user-menu {
-  font-size: 0.75rem;
-  color: #666;
+    font-size: 0.75rem;
+    color: #666;
 }
 
 .user-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: #4ecdc4;
-  cursor: pointer;
-  flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #4ecdc4;
+    cursor: pointer;
+    flex-shrink: 0;
 }
 
 /* New pill layout */
 .user-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  padding: 12px 18px;
-  border-radius: 999px;
-  box-shadow: 0 1px 0 rgba(0,0,0,0.02);
-  border: 1px solid rgba(0,0,0,0.04);
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .user-text {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  line-height: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1;
 }
 
 .user-name {
-  font-size: 1.125rem;
-  color: #18333a;
-  font-weight: 700;
+    font-size: 1.125rem;
+    color: #18333a;
+    font-weight: 700;
 }
 
 .user-menu {
-  font-size: 0.9rem;
-  color: #233d43;
-  opacity: 0.8;
+    font-size: 0.9rem;
+    color: #233d43;
+    opacity: 0.8;
 }
 
 .user-avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background-color: #4ecdc4;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background-color: #4ecdc4;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06);
 }
