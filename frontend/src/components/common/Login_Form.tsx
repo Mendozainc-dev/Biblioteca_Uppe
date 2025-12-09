@@ -1,25 +1,57 @@
 import "../../styles/fonts.css";
 
-import React, { useState } from "react";
+import { useState } from "react";
+import type { FormEvent } from "react";
 import "./Login_Form.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
-  const [user, setUser] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [termsAccepted, setTermsAccepted] = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(
-      "Usuario:",
-      user,
-      "Contraseña:",
-      password,
-      "Recordarme:",
-      termsAccepted,
-    );
-    alert("Esperando respuesta del servidor");
+    setError("");
+    setLoading(true);
+
+    if (!termsAccepted) {
+      setError("Debes aceptar los términos y condiciones");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:8000/login/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        // Usar la ruta de redirección devuelta por el backend
+        // El backend devuelve '/admin/dashboard' para administradores
+        // y '/user/home' para usuarios regulares
+        const redirect = data.redirect || "/";
+        navigate(redirect);
+      } else {
+        setError(data.message || "Error al iniciar sesión");
+      }
+    } catch (err) {
+      setError("Error de conexión con el servidor");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -28,12 +60,15 @@ const LoginForm = () => {
         <h1 className="login-title">INICIAR SESIÓN</h1>
 
         <form className="login-form" onSubmit={handleSubmit}>
+          {error && (
+            <div style={{ color: "red", marginBottom: "10px" }}>{error}</div>
+          )}
           <input
-            type="text"
+            type="email"
             className="login-input"
-            placeholder="Usuario Proporcionado por la universidad"
-            value={user}
-            onChange={(e) => setUser(e.target.value)}
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
           <div className="password-container">
@@ -60,8 +95,8 @@ const LoginForm = () => {
               Acepto los términos y condiciones
             </label>
           </div>
-          <button type="submit" className="login-button">
-            Iniciar Sesión
+          <button type="submit" className="login-button" disabled={loading}>
+            {loading ? "Iniciando sesión..." : "Iniciar Sesión"}
           </button>
           <p className="register-link-container">
             ¿No tienes cuenta?{" "}
