@@ -1,10 +1,9 @@
-function Editpage() {
-  return (
-    <div style={{ padding: 20 }}>
-      <h2>Editar Libro</h2>
-      <p>Formulario para editar libros en la biblioteca.</p>
-    </div>
-  );
-}
+import EditBookPage from "../components/domain/EditBookPage";
 
-export default Editpage;
+const EditPage = () => {
+  return (
+      <EditBookPage />
+  );
+};
+
+export default EditPage;
