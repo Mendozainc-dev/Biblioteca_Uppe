@@ -1,0 +1,135 @@
+/* --- ESTRUCTURA DE LAYOUT (Basado en tu AdminPage) --- */
+.containerEditPage {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #f5f5f5; /* Fondo gris claro general */
+}
+
+/* Forzamos que el Menubar (si es el primer hijo) se comporte como sidebar fijo */
+.containerEditPage > :first-child { 
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 220px; /* Tu ancho de sidebar */
+    z-index: 1000;
+}
+
+/* El contenido principal se empuja a la derecha */
+.edit-main {
+    margin-left: 220px; /* Mismo ancho que el sidebar */
+    flex: 1;
+    width: calc(100% - 220px);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Contenedor interno para dar padding y centrar */
+.content-scrollable {
+    padding: 40px;
+    max-width: 1100px; /* Evita que el formulario sea infinito en pantallas grandes */
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* --- ESTILOS VISUALES DEL FORMULARIO --- */
+
+/* Cabecera Título + Botón Cancelar */
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.page-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+}
+
+/* Tabs (Pestañas) */
+.tabs-wrapper {
+    display: flex;
+    gap: 30px;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 25px;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding-bottom: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #9ca3af;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+}
+
+.tab-btn.active {
+    color: #000;
+    border-bottom-color: #22d3ee; /* Color Cyan */
+}
+
+/* Tarjeta Blanca (El contenedor del form) */
+.form-card {
+    background-color: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e5e7eb;
+}
+
+/* Grid para poner inputs lado a lado */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 10px;
+}
+
+/* Botones inferiores */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #f3f4f6;
+}
+
+/* --- RESPONSIVE (Móvil) --- */
+@media (max-width: 768px) {
+    .containerEditPage {
+        flex-direction: column;
+    }
+
+    .containerEditPage > :first-child {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .edit-main {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr; /* Una sola columna en móvil */
+        gap: 15px;
+    }
+    
+    .hidden-mobile {
+        display: none;
+    }
+    
+    .content-scrollable {
+        padding: 20px;
+    }
+}
