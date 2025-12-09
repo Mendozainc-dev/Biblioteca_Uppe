@@ -8,6 +8,7 @@ import MostrarContacto from "./pages/ContactoPage.tsx";
 import AdminPage from "./pages/AdminPage.tsx";
 import UserHomePage from "./pages/UserHomePage.tsx";
 import AdministracionBiblioteca from "./pages/AdministracionBiblioteca.tsx";
+import InsertPage from "./pages/Insertpage.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -22,6 +23,7 @@ createRoot(document.getElementById("root")!).render(
           path="/admin/administración_biblioteca/*"
           element={<AdministracionBiblioteca />}
         />
+        <Route path="/admin/Registar-libro" element={<InsertPage/>} ></Route>
       </Routes>
     </BrowserRouter>
   </StrictMode>,

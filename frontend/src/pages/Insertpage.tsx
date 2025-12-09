@@ -1,10 +1,9 @@
-function Insertpage() {
-  return (
-    <div style={{ padding: 20 }}>
-      <h2>Crear Libro</h2>
-      <p>Formulario para crear nuevos libros en la biblioteca.</p>
-    </div>
-  );
-}
+import FormRegisterPage from "../components/domain/FormRegisterPage";
 
-export default Insertpage;
+const InsertPage = () => {
+  return (
+      <FormRegisterPage />
+  );
+};
+
+export default InsertPage;
